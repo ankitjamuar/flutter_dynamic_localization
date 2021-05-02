@@ -4,7 +4,10 @@ A new Flutter application.
 
 ## Getting Started
 
-Ths repo can act as a boiler plate for Flutter Localisation. Create Multilinguap app taking this as a base.
+Ths repo can act as a boiler plate for Flutter Localisation. Create Multilingual app taking this as a base.
+
+Add Flutter Intl and add arb files as number of language to be supported.
+Use ChangeNotifier to publish changes to registered widget about change in Locale.
 
 
 ![Alt Text](https://raw.githubusercontent.com/ankitjamuar/flutter_dynamic_localization/master/gifapp.gif)
