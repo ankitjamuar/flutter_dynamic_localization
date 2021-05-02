@@ -1,4 +1,4 @@
-package com.application.flutter_app_localisation
+package com.application.flutter_app_locale
 
 import io.flutter.embedding.android.FlutterActivity
 

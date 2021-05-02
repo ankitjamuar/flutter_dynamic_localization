@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_localisation/LanguageChangeNotifierProvider.dart';
+import 'package:flutter_app_locale/LanguageChangeProvider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
@@ -11,17 +11,14 @@ void main() {
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
-
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<LanguageChangeNotifierProvider>(
-      create: (context) => LanguageChangeNotifierProvider(),
+    return ChangeNotifierProvider<LanguageChangeProvider>(
+      create: (context) =>  LanguageChangeProvider(),
       child: Builder(
         builder: (context) =>
         MaterialApp(
-          locale: Provider
-              .of<LanguageChangeNotifierProvider>(context, listen: true)
-              .currentLocale,
+          locale: Provider.of<LanguageChangeProvider>(context, listen: true).currentLocale,
           localizationsDelegates: [
             S.delegate,
             GlobalMaterialLocalizations.delegate,
@@ -44,7 +41,6 @@ class MyApp extends StatelessWidget {
           ),
           home: MyHomePage(title: 'Flutter Demo Home Page'),
         ),
-
       ),
     );
   }
@@ -66,7 +62,6 @@ class MyHomePage extends StatefulWidget {
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
-
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -80,14 +75,11 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
-      context.read<LanguageChangeNotifierProvider>().changeLocale('hi');
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final languageChangeProvider = Provider.of<LanguageChangeNotifierProvider>(context, listen: true);
-
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -120,12 +112,20 @@ class _MyHomePageState extends State<MyHomePage> {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(languageChangeProvider.currentLocale.toString() ),
-            Text( S.of(context).HelloText),
+            Text(S.of(context).welcomeText),
+            Text(
+              'You have pushed the button this many times:',
+            ),
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
+            ElevatedButton(onPressed: (){
+              context.read<LanguageChangeProvider>().changeLocale("hi");
+            }, child: Text("Hindi")),
+            ElevatedButton(onPressed: (){
+              context.read<LanguageChangeProvider>().changeLocale("en");
+            }, child: Text("English")),
           ],
         ),
       ),

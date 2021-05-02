@@ -1,6 +1,6 @@
 {
-    "name": "flutter_app_localisation",
-    "short_name": "flutter_app_localisation",
+    "name": "flutter_app_locale",
+    "short_name": "flutter_app_locale",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

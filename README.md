@@ -1,4 +1,4 @@
-# flutter_app_localisation
+# flutter_app_locale
 
 A new Flutter application.
 
